@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abrazo Mayor – Cuidadores de Personas Mayores</title>
+
+  <style>
+    /* RESET BÁSICO */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, sans-serif;
+      line-height: 1.7;
+      background: #f4f1ec;
+      color: #263238;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: #1f5b73;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 2.5rem;
+    }
+
+    /* TOP BAR / MARCA / NAV */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .brand {
+      display: flex;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .brand-logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #fbe9e7, #e0f7fa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: #1f5b73;
+    }
+
+    .brand-text h1 {
+      font-size: 1.4rem;
+      color: #1f3f4b;
+    }
+
+    .brand-text p {
+      font-size: 0.86rem;
+      color: #607d8b;
+    }
+
+    .topbar-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .topbar-nav a {
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+      color: #455a64;
+    }
+
+    .topbar-nav a:hover {
+      background: #e0f2f1;
+      text-decoration: none;
+    }
+
+    /* BOTONES */
+    .btn-primary,
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.5rem;
+      border-radius: 999px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: transform 0.1s ease, box-shadow 0.1s ease,
+                  background-color 0.1s ease, border-color 0.1s ease;
+    }
+
+    .btn-primary {
+      background: #2e7d5a;
+      color: #fff;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+    }
+
+    .btn-primary:hover {
+      background: #265f46;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.22);
+      text-decoration: none;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #1f5b73;
+      border: 1px solid #b0bec5;
+    }
+
+    .btn-outline:hover {
+      background: #ffffff;
+      border-color: #78909c;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .btn-mini {
+      font-size: 0.82rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid #cfd8dc;
+      background: #ffffff;
+      color: #1f5b73;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn-mini:hover {
+      background: #edf3f7;
+      text-decoration: none;
+    }
+
+    /* Botón radio música */
+    .btn-radio {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.3rem;
+      border-radius: 999px;
+      border: 1px solid #cfd8dc;
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #37474f;
+    }
+
+    .btn-radio span.icon {
+      font-size: 1rem;
+    }
+
+    /* HERO */
+    .hero {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 5px 18px rgba(15,23,42,0.12);
+      padding: 1.8rem 1.8rem 1.6rem;
+      margin-bottom: 2.4rem;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
+      gap: 1.8rem;
+    }
+
+    .hero-content h2 {
+      font-size: 1.8rem;
+      color: #1f3f4b;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+      color: #455a64;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-highlight {
+      color: #2e7d5a;
+      font-weight: 600;
+    }
+
+    .hero-list {
+      margin-top: 0.75rem;
+      font-size: 0.96rem;
+      color: #37474f;
+    }
+
+    .hero-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-cta {
+      margin-top: 1.1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .hero-scene {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 4px solid #f5f5f5;
+    }
+
+    .hero-scene img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* SECCIONES */
+    section {
+      margin-bottom: 2.4rem;
+    }
+
+    section h2 {
+      font-size: 1.45rem;
+      color: #1f3f4b;
+      margin-bottom: 0.6rem;
+    }
+
+    section p.section-intro {
+      font-size: 0.98rem;
+      max-width: 52rem;
+      color: #455a64;
+      margin-bottom: 1.2rem;
+    }
+
+    /* SERVICIOS */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.1rem 1.25rem;
+      box-shadow: 0 3px 12px rgba(15,23,42,0.06);
+      font-size: 0.94rem;
+      color: #37474f;
+    }
+
+    .service-card h3 {
+      font-size: 1.02rem;
+      margin-bottom: 0.4rem;
+      color: #1f3f4b;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: #546e7a;
+    }
+
+    /* CUIDADORES */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.9rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 14px rgba(15,23,42,0.08);
+      padding: 1.5rem 1.35rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .card-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.7rem;
+    }
+
+    .card-photo-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #e3f2fd;
+      box-shadow: 0 3px 10px rgba(15,23,42,0.15);
+    }
+
+    .card-title-group h3 {
+      font-size: 1.1rem;
+    }
+
+    .card-title-group p {
+      font-size: 0.88rem;
+      color: #607d8b;
+    }
+
+    .card-body {
+      font-size: 0.9rem;
+      color: #37474f;
+    }
+
+    .card-body p {
+      margin-bottom: 0.45rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      background: #edf3f7;
+      color: #1f5b73;
+      margin-right: 0.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .pill.strong {
+      background: #e1f5e9;
+      color: #256845;
+      font-weight: 600;
+    }
+
+    .services-list {
+      list-style: disc;
+      padding-left: 1.1rem;
+      margin-top: 0.2rem;
+    }
+
+    .services-list li {
+      margin-bottom: 0.18rem;
+    }
+
+    .card-footer {
+      padding-top: 0.6rem;
+      border-top: 1px solid #eceff1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.86rem;
+    }
+
+    .price-range {
+      font-weight: 600;
+      color: #256845;
+    }
+
+    .location {
+      color: #607d8b;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    /* CÓMO TRABAJAMOS – UNA FOTO GRANDE + TEXTO */
+    .process-wrapper {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 14px rgba(15,23,42,0.08);
+      padding: 1.4rem 1.4rem 1.6rem;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
+      gap: 1.6rem;
+    }
+
+    .process-photo {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 4px solid #f5f5f5;
+    }
+
+    .process-photo img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .process-text {
+      font-size: 0.94rem;
+      color: #37474f;
+    }
+
+    .process-text p {
+      margin-bottom: 0.7rem;
+    }
+
+    .process-text ul {
+      padding-left: 1.1rem;
+      list-style: disc;
+    }
+
+    .process-text li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* RESEÑAS */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.3rem;
+    }
+
+    .review-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 3px 10px rgba(15,23,42,0.06);
+      font-size: 0.9rem;
+      color: #37474f;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.3rem;
+    }
+
+    .review-name {
+      font-weight: 600;
+      color: #1f3f4b;
+    }
+
+    .stars-display {
+      color: #f9a825;
+      font-size: 0.85rem;
+    }
+
+    .review-tag {
+      font-size: 0.8rem;
+      color: #607d8b;
+      margin-bottom: 0.3rem;
+    }
+
+    /* RADIO PARA PACIENTES MAYORES */
+    .radio-box {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.3rem 1.4rem;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.08);
+      display: grid;
+      grid-template-columns: minmax(0, 2.8fr) minmax(0, 2.2fr);
+      gap: 1.4rem;
+      align-items: center;
+    }
+
+    .radio-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+      color: #1f3f4b;
+    }
+
+    .radio-info p {
+      font-size: 0.9rem;
+      color: #455a64;
+      margin-bottom: 0.4rem;
+    }
+
+    .radio-cover {
+      border-radius: 16px;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .radio-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* CONTACTO + FOTO GRUPAL */
+    .contact-wrapper {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.3rem 1.4rem;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.08);
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 3fr);
+      gap: 1.4rem;
+      align-items: center;
+    }
+
+    .contact-box {
+      font-size: 0.94rem;
+      color: #37474f;
+    }
+
+    .contact-list {
+      margin-top: 0.6rem;
+      list-style: disc;
+      padding-left: 1.2rem;
+    }
+
+    .contact-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-photo {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 4px solid #f5f5f5;
+    }
+
+    .contact-photo img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    footer {
+      margin-top: 2.2rem;
+      font-size: 0.8rem;
+      text-align: center;
+      color: #78909c;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .process-wrapper,
+      .radio-box,
+      .contact-wrapper {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-wrap {
+        padding: 1.1rem 0.9rem 2.1rem;
+      }
+
+      .hero {
+        padding: 1.4rem 1.1rem 1.3rem;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio de fondo: lista de pistas -->
+  <audio id="bgAudio" loop></audio>
+
+  <div class="page-wrap">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-logo">A</div>
+        <div class="brand-text">
+          <h1>Abrazo Mayor</h1>
+          <p>Cuidadores profesionales con corazón para la tercera edad</p>
+        </div>
+      </div>
+      <nav class="topbar-nav">
+        <a href="#servicios">Servicios</a>
+        <a href="#cuidadores">Cuidadores</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#radio">Radio</a>
+        <a href="#resenas">Opiniones</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <h2>Cuidado cálido y profesional para sus seres queridos mayores</h2>
+        <p>
+          En <strong>Abrazo Mayor</strong> acompañamos a las personas mayores en
+          su día a día: en el hogar, en los controles de salud y en los momentos
+          de compañía, siempre con un
+          <span class="hero-highlight">trato humano, respetuoso y seguro</span>.
+        </p>
+        <ul class="hero-list">
+          <li>Higiene, movilización y alimentación diaria.</li>
+          <li>Control básico de salud y apoyo en medicación indicada.</li>
+          <li>Acompañamiento emocional para la persona mayor y su familia.</li>
+        </ul>
+        <div class="hero-cta">
+          <a href="#servicios" class="btn-primary">Ver servicios</a>
+          <a href="#cuidadores" class="btn-outline">Conocer a los cuidadores</a>
+        </div>
+      </div>
+      <div class="hero-scene">
+        <img src="jorge-cafe-mayor.png"
+             alt="Jorge Jover Bareiro Alves de Oliveira acompañando a un adulto mayor en un ambiente cálido">
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <h2>Servicios de Abrazo Mayor</h2>
+      <p class="section-intro">
+        Ofrecemos servicios de cuidado domiciliario y acompañamiento a personas
+        mayores, adaptados a las necesidades de cada familia.
+      </p>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <h3>Cuidado en el hogar</h3>
+          <p>
+            Higiene personal, apoyo en vestido, movilización básica, cambios de
+            posición, compañía diaria y supervisión general del bienestar.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <h3>Apoyo en salud y medicación</h3>
+          <p>
+            Control básico de signos vitales, glucosa, aplicación de insulina y
+            administración de medicamentos indicados por profesionales de salud.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <h3>Acompañamiento a controles y gestiones</h3>
+          <p>
+            Acompañamiento a consultas médicas, estudios y gestiones relacionadas
+            con la salud y la vida diaria.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <h3>Acompañamiento emocional</h3>
+          <p>
+            Conversación, escucha activa, estimulación cognitiva y contención
+            emocional adaptada a la historia de vida de cada persona mayor.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CUIDADORES -->
+    <section id="cuidadores">
+      <h2>Conozca a nuestros cuidadores</h2>
+      <p class="section-intro">
+        Cada cuidador cuenta con formación específica y experiencia real en el
+        cuidado de personas mayores. Puede descargar su CV y contactarlos
+        por teléfono, correo o WhatsApp.
+      </p>
+
+      <div class="cards-grid">
+
+        <!-- JAZMÍN -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-photo-circle">
+              <img src="jazmin-foto.png" alt="Foto de Luiana Jazmin Cáceres Arguello">
+            </div>
+            <div class="card-title-group">
+              <h3>Luiana Jazmin Cáceres Arguello</h3>
+              <p>Cuidadora de personas mayores – Asunción</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>
+              10 años de experiencia en cuidado domiciliario, con formación en
+              primeros auxilios, emergencias médicas y seguridad en el entorno
+              de cuidado.
+            </p>
+            <div>
+              <span class="pill strong">10 años experiencia</span>
+              <span class="pill">Primeros auxilios</span>
+            </div>
+            <div>
+              <strong>Servicios destacados:</strong>
+              <ul class="services-list">
+                <li>Higiene y actividades de la vida diaria.</li>
+                <li>Control básico de signos vitales.</li>
+                <li>Medicación indicada y acompañamiento a consultas.</li>
+                <li>Estimulación cognitiva y contención emocional.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="price-range">Gs. 55.000 / hora*</div>
+              <div class="location">Asunción y alrededores</div>
+            </div>
+            <div class="card-actions">
+              <a href="cv-jazmin.pdf" class="btn-mini" target="_blank" rel="noopener">Ver CV</a>
+              <a href="https://wa.me/595971768126" class="btn-mini" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- DIGNA -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-photo-circle">
+              <img src="digna-foto.png" alt="Foto de Digna Peralta">
+            </div>
+            <div class="card-title-group">
+              <h3>Digna Peralta</h3>
+              <p>Cuidadora – Itauguá</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>
+              Responsable y empática, con experiencia en cuidado de personas mayores
+              con dependencia moderada en domicilio.
+            </p>
+            <div>
+              <span class="pill strong">3 años experiencia</span>
+            </div>
+            <div>
+              <strong>Servicios destacados:</strong>
+              <ul class="services-list">
+                <li>Higiene y vestido diario.</li>
+                <li>Apoyo en medicación y alimentación.</li>
+                <li>Acompañamiento a consultas médicas.</li>
+                <li>Orden básico del entorno de cuidado.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="price-range">Gs. 55.000 / hora*</div>
+              <div class="location">Itauguá y alrededores</div>
+            </div>
+            <div class="card-actions">
+              <a href="cv-digna.pdf" class="btn-mini" target="_blank" rel="noopener">Ver CV</a>
+              <a href="https://wa.me/595994843754" class="btn-mini" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PABLINA -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-photo-circle">
+              <img src="pablina-foto.png" alt="Foto de Pablina Roa Martínez">
+            </div>
+            <div class="card-title-group">
+              <h3>Pablina Roa Martínez</h3>
+              <p>Cuidadora – Especialista en Alzheimer</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>
+              9 años de experiencia en cuidado de adultos mayores con Alzheimer
+              y alta dependencia, con fuerte vocación de servicio.
+            </p>
+            <div>
+              <span class="pill strong">9 años experiencia</span>
+              <span class="pill">Alzheimer y demencias</span>
+            </div>
+            <div>
+              <strong>Servicios destacados:</strong>
+              <ul class="services-list">
+                <li>Higiene y cuidado diario.</li>
+                <li>Administración de medicación y horarios.</li>
+                <li>Acompañamiento a citas y gestiones de salud.</li>
+                <li>Supervisión de alimentación y seguridad.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="price-range">Gs. 55.000 / hora*</div>
+              <div class="location">Emboscada y alrededores</div>
+            </div>
+            <div class="card-actions">
+              <a href="cv-pablina.pdf" class="btn-mini" target="_blank" rel="noopener">Ver CV</a>
+              <a href="https://wa.me/595986661169" class="btn-mini" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- BLANCA -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-photo-circle">
+              <img src="blanca-foto.png" alt="Foto de Blanca Lila Romero de Vázquez">
+            </div>
+            <div class="card-title-group">
+              <h3>Blanca Lila Romero de Vázquez</h3>
+              <p>Cuidadora – Manejo de diabetes</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>
+              5 años de experiencia en cuidado de persona mayor de 80 años con
+              dependencia moderada, con manejo de presión, glucosa e insulina.
+            </p>
+            <div>
+              <span class="pill strong">5 años experiencia</span>
+              <span class="pill">Glucosa e insulina</span>
+            </div>
+            <div>
+              <strong>Servicios destacados:</strong>
+              <ul class="services-list">
+                <li>Higiene y cuidado diario.</li>
+                <li>Toma de presión y control de glucosa.</li>
+                <li>Aplicación de insulina.</li>
+                <li>Acompañamiento y supervisión de seguridad.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="price-range">Gs. 55.000 / hora*</div>
+              <div class="location">Ypané y alrededores</div>
+            </div>
+            <div class="card-actions">
+              <a href="cv-blanca.pdf" class="btn-mini" target="_blank" rel="noopener">Ver CV</a>
+              <a href="https://wa.me/595982867912" class="btn-mini" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ANDREA -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-photo-circle">
+              <img src="andrea-foto.png" alt="Foto de Andrea Enciso">
+            </div>
+            <div class="card-title-group">
+              <h3>Andrea Enciso</h3>
+              <p>Cuidadora – Gestión de salud</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>
+              Especialista en control de presión, glucosa, administración de
+              insulina y planificación de comidas adaptadas a condiciones médicas.
+            </p>
+            <div>
+              <span class="pill strong">Control de salud diario</span>
+              <span class="pill">Curso Cuidador Adulto Mayor</span>
+            </div>
+            <div>
+              <strong>Servicios destacados:</strong>
+              <ul class="services-list">
+                <li>Higiene y movilización básica.</li>
+                <li>Control de presión y glucosa, insulina.</li>
+                <li>Planificación y preparación de comidas.</li>
+                <li>Coordinación y acompañamiento a consultas.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="price-range">Gs. 55.000 / hora*</div>
+              <div class="location">Capiatá y alrededores</div>
+            </div>
+            <div class="card-actions">
+              <a href="cv-andrea.pdf" class="btn-mini" target="_blank" rel="noopener">Ver CV</a>
+              <a href="https://wa.me/595991978910" class="btn-mini" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- JORGE -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-photo-circle">
+              <img src="jorge-foto.png" alt="Foto de Jorge Jover Bareiro Alves de Oliveira">
+            </div>
+            <div class="card-title-group">
+              <h3>Jorge Jover Bareiro Alves de Oliveira</h3>
+              <p>Cuidador – Acompañamiento social y apoyo diario</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>
+              Cuidador con perfil formal y cercano, enfocado en acompañamiento
+              social, apoyo en actividades diarias y presencia tranquila para la
+              persona mayor.
+            </p>
+            <div>
+              <span class="pill strong">Acompañamiento social</span>
+            </div>
+            <div>
+              <strong>Servicios destacados:</strong>
+              <ul class="services-list">
+                <li>Acompañamiento en actividades diarias.</li>
+                <li>Conversación y contención emocional.</li>
+                <li>Apoyo en higiene y alimentación ligera.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="price-range">Gs. 55.000 / hora*</div>
+              <div class="location"></div>
+            </div>
+            <div class="card-actions">
+              <a href="cv-jorge.pdf" class="btn-mini" target="_blank" rel="noopener">Ver CV</a>
+              <a href="mailto:jorgebareiroalves@gmail.com" class="btn-mini">Email</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ESTELA -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-photo-circle">
+              <img src="estela-foto.png" alt="Foto de Estela Portillo">
+            </div>
+            <div class="card-title-group">
+              <h3>Estela Portillo</h3>
+              <p>Cuidadora de personas mayores</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>
+              Cuidadora con trato cálido y cercano, enfocada en higiene, compañía
+              y apoyo en actividades de la vida diaria.
+            </p>
+            <div>
+              <span class="pill strong">Cuidado domiciliario</span>
+            </div>
+            <div>
+              <strong>Servicios destacados:</strong>
+              <ul class="services-list">
+                <li>Higiene y arreglo personal.</li>
+                <li>Acompañamiento diario y conversación.</li>
+                <li>Apoyo en alimentación y movilización básica.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="price-range">Gs. 55.000 / hora*</div>
+              <div class="location"></div>
+            </div>
+            <div class="card-actions">
+              <a href="cv-estela.pdf" class="btn-mini" target="_blank" rel="noopener">Ver CV</a>
+              <a href="mailto:stelroch@gmail.com" class="btn-mini">Email</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- LUISA -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-photo-circle">
+              <img src="luisa-foto.png" alt="Foto de Luisa Faria de Benítez">
+            </div>
+            <div class="card-title-group">
+              <h3>Luisa Faria de Benítez</h3>
+              <p>Cuidadora – Atención cercana</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>
+              Cuidadora con experiencia en atención cercana en sala y domicilio,
+              brindando confort, escucha y apoyo en tareas básicas.
+            </p>
+            <div>
+              <span class="pill strong">Atención personalizada</span>
+            </div>
+            <div>
+              <strong>Servicios destacados:</strong>
+              <ul class="services-list">
+                <li>Acompañamiento en sala y hogar.</li>
+                <li>Apoyo en higiene y confort.</li>
+                <li>Contención emocional y conversación.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="price-range">Gs. 55.000 / hora*</div>
+              <div class="location"></div>
+            </div>
+            <div class="card-actions">
+              <a href="cv-luisa.pdf" class="btn-mini" target="_blank" rel="noopener">Ver CV</a>
+              <a href="mailto:lfariabaez@gmail.com" class="btn-mini">Email</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CÓMO TRABAJAMOS -->
+    <section id="proceso">
+      <h2>Cómo trabajamos en Abrazo Mayor</h2>
+      <p class="section-intro">
+        El tipo de acompañamiento que brindamos tiene: presencia constante,
+        cuidado respetuoso y apoyo en las tareas de la vida diaria.
+      </p>
+
+      <div class="process-wrapper">
+        <div class="process-photo">
+          <img src="luisa-atendiendo-mayor.png"
+               alt="Cuidadora atendiendo con calidez a una persona mayor en sala">
+        </div>
+        <div class="process-text">
+          <p>
+            Nuestro equipo combina atención práctica y contención emocional,
+            para que la persona mayor se sienta segura y acompañada en su rutina.
+          </p>
+          <ul>
+            <li>Apoyo en higiene, vestimenta y confort del adulto mayor.</li>
+            <li>Control básico de salud según indicaciones médicas.</li>
+            <li>Acompañamiento en actividades diarias dentro y fuera del hogar.</li>
+            <li>Registro sencillo de observaciones para la familia y el médico.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RADIO ABRAZO MAYOR -->
+    <section id="radio">
+      <h2>Radio Abrazo Mayor</h2>
+      <p class="section-intro">
+        Un espacio musical pensado para acompañar a nuestros pacientes mayores
+        con melodías suaves.
+      </p>
+
+      <div class="radio-box">
+        <div class="radio-info">
+          <h3>Música para relajarse y recordar</h3>
+          <p>
+            Puede reproducir esta selección musical mientras el cuidador se
+            encuentra con la persona mayor. La música ayuda a crear un ambiente
+            tranquilo y familiar.
+          </p>
+
+          <button type="button" class="btn-radio" id="toggleRadio">
+            <span class="icon" id="radioIcon">▶</span>
+            <span id="radioLabel">Reproducir música</span>
+          </button>
+        </div>
+
+        <div class="radio-cover">
+          <img src="abuelo.png" alt="Imagen de adulto mayor disfrutando de la música">
+        </div>
+      </div>
+    </section>
+
+    <!-- OPINIONES -->
+    <section id="resenas">
+      <h2>Lo que dicen las familias</h2>
+      <p class="section-intro">
+        Algunos ejemplos de valoraciones sobre el cuidado brindado por nuestros
+        profesionales.
+      </p>
+
+      <div class="reviews-grid">
+        <article class="review-card">
+          <div class="review-header">
+            <span class="review-name">Familia Aranda</span>
+            <span class="stars-display">★★★★★</span>
+          </div>
+          <div class="review-tag">Cuidadora: Digna Peralta</div>
+          <p>
+            “Digna cuidó a nuestra madre con mucha paciencia y respeto. Siempre
+            fue puntual y atenta a los horarios de medicación.”
+          </p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-header">
+            <span class="review-name">Familia Romero</span>
+            <span class="stars-display">★★★★★</span>
+          </div>
+          <div class="review-tag">Cuidadora: Pablina Roa</div>
+          <p>
+            “Pablina fue una gran ayuda con mi padre con Alzheimer. Supo
+            manejar las rutinas y las crisis con mucha calma.”
+          </p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-header">
+            <span class="review-name">Familia Enciso</span>
+            <span class="stars-display">★★★★☆</span>
+          </div>
+          <div class="review-tag">Cuidadora: Andrea Enciso</div>
+          <p>
+            “Andrea organizó muy bien los controles de salud y las comidas.
+            Nos sentíamos tranquilos dejándola a cargo.”
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACTO + FOTO GRUPAL -->
+    <section id="contacto">
+      <h2>Contacto y contratación</h2>
+
+      <div class="contact-wrapper">
+        <div class="contact-box">
+          <p>
+            Para contratar a alguno de nuestros cuidadores, puede comunicarse
+            directamente al número que aparece en su ficha, o escribirnos para
+            recibir ayuda en la elección de la persona más adecuada para su
+            familiar.
+          </p>
+          <ul class="contact-list">
+            <li>Revise los perfiles y escoja 1 o 2 cuidadores que se ajusten a su necesidad.</li>
+            <li>Coordine una entrevista inicial (presencial o virtual).</li>
+            <li>Deje por escrito las tareas, horarios, forma de pago y contacto de referencia.</li>
+          </ul>
+          <p style="margin-top:0.8rem; font-size:0.84rem; color:#78909c;">
+            *Los valores por hora son orientativos y pueden ajustarse según el
+            grado de dependencia, la distancia y las tareas acordadas.
+          </p>
+        </div>
+
+        <div class="contact-photo">
+          <img src="grupo.png" alt="Foto grupal del equipo de cuidadores de Abrazo Mayor">
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2026 Abrazo Mayor – Equipo profesional de cuidadores de personas mayores.
+    </footer>
+
+  </div>
+
+  <!-- Script para controlar la música (lista de pistas) [web:190][web:219][web:204] -->
+  <script>
+    const audio = document.getElementById('bgAudio');
+    const toggleBtn = document.getElementById('toggleRadio');
+    const iconSpan = document.getElementById('radioIcon');
+    const labelSpan = document.getElementById('radioLabel');
+
+    const tracks = [
+      'mayor.mp3',
+      'musica2.mp3',
+      'musica3.mp3'
+    ];
+    let currentTrack = 0;
+
+    function loadTrack(index) {
+      audio.src = tracks[index];
+    }
+
+    loadTrack(currentTrack);
+
+    audio.addEventListener('ended', () => {
+      currentTrack = (currentTrack + 1) % tracks.length;
+      loadTrack(currentTrack);
+      audio.play().catch(() => {});
+    });
+
+    if (toggleBtn && audio) {
+      toggleBtn.addEventListener('click', async () => {
+        try {
+          if (audio.paused) {
+            await audio.play();
+            iconSpan.textContent = '⏸';
+            labelSpan.textContent = 'Pausar música';
+          } else {
+            audio.pause();
+            iconSpan.textContent = '▶';
+            labelSpan.textContent = 'Reproducir música';
+          }
+        } catch (e) {
+          console.log('No se pudo reproducir el audio automáticamente:', e);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
